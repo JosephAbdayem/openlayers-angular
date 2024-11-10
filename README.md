@@ -1,27 +1,72 @@
-# TempAngular
+# 🌐 OpenLayers Angular Map Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.11.
+An Angular project using **OpenLayers** and **GeoServer** to create a map application with customizable layers. This project provides a streamlined way to visualize both a base map and a Web Map Service (WMS) layer from a GeoServer instance.
 
-## Development server
+## 📋 Prerequisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Ensure the following dependencies are installed:
 
-## Code scaffolding
+- **Node.js**: 18.x
+- **Angular CLI**: Install globally with `npm install -g @angular/cli`
+- **GeoServer**: Accessible at `http://localhost:8080` and configured with published WMS layers. You can set up a compatible GeoServer by following instructions in the [postgis-server repository](https://github.com/JosephAbdayem/postgis-server).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## ⚙️ Setup Instructions
 
-## Build
+### 1. Clone the Repository
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+git clone https://github.com/JosephAbdayem/openlayers-angular.git
+cd openlayers-angular
+```
 
-## Running unit tests
+### 2. Install Project Dependencies
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm install
+```
 
-## Running end-to-end tests
+### 3. Start the Angular Development Server
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run the development server:
 
-## Further help
+```bash
+ng serve -o
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Visit `http://localhost:4200` in your browser to view the application.
+
+## 🚀 Usage
+
+- **OSM Base Layer**: Provides a default OpenStreetMap base layer
+- **WMS Layer**: Configured to pull WMS layers from a GeoServer instance at `http://localhost:8080`. This layer can be modified as needed in the code
+
+## 🔄 Customization
+
+**GeoServer WMS Layer**: To change the WMS layer displayed, edit the `params` configuration in `map.component.ts`
+
+  ```typescript
+  params: { 'LAYERS': 'your_layer_name', 'TILED': true }
+  ```
+
+**Map Center and Zoom**: Update the initial map view in `map.component.ts`
+
+  ```typescript
+  center: [longitude, latitude],
+  zoom: your_zoom_level
+  ```
+
+## 🛠 Project Structure
+
+- **Angular**: Built with Angular standalone components
+- **OpenLayers**: Provides map rendering and layer management
+- **GeoServer Integration**: Uses `ImageWMS` to retrieve layers from GeoServer
+
+---
+
+## 💬 Issues and Contributions
+
+Feel free to open issues for any bugs or feature requests. Contributions are welcome through pull requests to help improve the project!
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE)
