@@ -1,0 +1,54 @@
+# Node.js and NPM dependencies
+node_modules/
+package-lock.json
+npm-debug.log*
+yarn-error.log
+
+# Build directories and files
+dist/
+out-tsc/
+.tmp/
+.cache/
+
+# Environment files
+src/environments/environment*.ts
+
+# Angular settings and cache
+.angular/
+.angular/cache/
+
+# Editor and OS configuration files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Docker build files
+docker-compose.override.yml
+Dockerfile
+**/Dockerfile
+docker-compose.yml
+
+# TypeScript temporary files
+*.tsbuildinfo
+
+# Operating System files
+*.swp
+*~
+.vscode/
+*.bak
+*.orig
+.sass-cache/
+.env
+.env.*
+
+# Cypress test cache and report files
+cypress/videos/
+cypress/screenshots/
+
+# Temporary development files and mock data
+/src/assets/tmp/
+src/assets/mock-data/
