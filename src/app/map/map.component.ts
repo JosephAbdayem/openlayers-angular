@@ -2,7 +2,9 @@ import { Component, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/
 import { isPlatformBrowser } from '@angular/common';
 import Map from 'ol/Map';
 import TileLayer from 'ol/layer/Tile';
+import ImageLayer from 'ol/layer/Image';
 import OSM from 'ol/source/OSM';
+import ImageWMS from 'ol/source/ImageWMS';
 import View from 'ol/View';
 
 @Component({
@@ -26,11 +28,19 @@ export class MapComponent implements OnInit, AfterViewInit {
         layers: [
           new TileLayer({
             source: new OSM()
+          }),
+          new ImageLayer({
+            source: new ImageWMS({
+              url: 'http://localhost:8080/geoserver/wms',
+              params: { 'LAYERS': 'tiger:tiger_roads', 'TILED': true },
+              serverType: 'geoserver',
+            })
           })
         ],
         view: new View({
-          center: [0, 0],
-          zoom: 2
+          center: [-73.9654, 40.7829],
+          zoom: 15,
+          projection: 'EPSG:4326'
         })
       });
     }
@@ -38,7 +48,6 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     if (this.isBrowser) {
-      // Força a atualização do tamanho do mapa
       setTimeout(() => {
         this.map.updateSize();
       }, 0);
