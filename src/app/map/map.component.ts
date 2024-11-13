@@ -32,7 +32,14 @@ export class MapComponent implements OnInit, AfterViewInit {
           new ImageLayer({
             source: new ImageWMS({
               url: 'http://localhost:8080/geoserver/wms',
-              params: { 'LAYERS': 'tiger:tiger_roads', 'TILED': true },
+              params: { 'LAYERS': 'ne:point', 'TILED': true },
+              serverType: 'geoserver',
+            })
+          }),
+          new ImageLayer({
+            source: new ImageWMS({
+              url: 'http://localhost:8080/geoserver/wms',
+              params: { 'LAYERS': 'ne:polygon', 'TILED': true },
               serverType: 'geoserver',
             })
           })
